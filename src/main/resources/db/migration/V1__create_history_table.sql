@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS history (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    message TEXT NOT NULL,
+    PRIMARY KEY (id)
+);
+
