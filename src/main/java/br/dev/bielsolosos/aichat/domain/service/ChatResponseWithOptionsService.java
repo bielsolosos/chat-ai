@@ -13,6 +13,9 @@ import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.image.ImageModel;
+import org.springframework.ai.image.ImagePrompt;
+import org.springframework.ai.image.ImageResponse;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,7 +31,7 @@ public class ChatResponseWithOptionsService {
             throw new IllegalArgumentException("Wrong model vendor");
         }
 
-        ChatModel chatModel = getChatModel();
+        ChatModel chatModel = getChatModel(request.model().getVendor());
 
         ChatOptions options = ChatOptions.builder().model(request.model().getModel()).temperature(request.temperature()).build();
 
@@ -39,12 +42,16 @@ public class ChatResponseWithOptionsService {
         return new ResponseFromLlm(response.getResult().getOutput().getText());
     }
 
+    /**
+     * Faz a request padrão já seta a temperatura com 0.3, define o máximo de tokens para 250 e define o modelo
+     * GEMMA_3_27B
+     */
     public ResponseFromLlm getResponseWithDefaultOptions(RequestPrompt request) {
-        ChatModel chatModel = getChatModel();
+        ChatModel chatModel = getChatModel(LlmModelEnum.GEMMA_3_27B.getVendor());
 
         ChatOptions options = ChatOptions.builder()
                 .model(LlmModelEnum.GEMMA_3_27B.getModel())
-                .temperature(0.1)
+                .temperature(0.3)
                 .maxTokens(250)
                 .build();
 
@@ -63,7 +70,10 @@ public class ChatResponseWithOptionsService {
                 .build());
     }
 
-    private ChatModel getChatModel() {
-        return chatModelVendor.getChatModel();
+    private ChatModel getChatModel(ModelVendorEnum vendor) {
+        if (vendor == null) {
+            return chatModelVendor.getChatModel();
+        }
+        return chatModelVendor.getChatModel(vendor);
     }
 }

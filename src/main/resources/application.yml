@@ -20,6 +20,11 @@ spring:
     locations: classpath:db/migration
     baseline-on-migrate: true
   ai:
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
     google:
       genai:
         api-key: ${GEMINI_API_KEY:}

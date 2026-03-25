@@ -26,6 +26,17 @@ public class ChatModelVendor {
         return model;
     }
 
+    public ChatModel getChatModel(ModelVendorEnum modelVendor) {
+        String beanName = modelVendor.getValue();
+        ChatModel model = chatModelByBeanName.get(beanName);
+
+        if (model == null) {
+            throw new IllegalStateException("ChatModel bean not found for configured vendor: " + beanName);
+        }
+
+        return model;
+    }
+
     public String getModelName() {
         return chataiProperties.getModelToUse();
     }
