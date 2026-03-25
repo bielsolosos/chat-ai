@@ -1,6 +1,5 @@
-CREATE TABLE IF NOT EXISTS history (
-    id BIGINT NOT NULL AUTO_INCREMENT,
-    message TEXT NOT NULL,
-    PRIMARY KEY (id)
+CREATE TABLE history (
+    id BIGSERIAL PRIMARY KEY,
+    message TEXT NOT NULL
 );
 
