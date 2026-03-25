@@ -17,7 +17,6 @@ public class TestChatController {
 
     @PostMapping
     public ResponseEntity<ResponseFromLlm> getResponse(@RequestBody RequestPrompt request, @RequestParam(required = false) boolean withoutHistory) {
-
         if (withoutHistory) {
             return ResponseEntity.ok(new ResponseFromLlm(testChatService.getResponseWithoutHistory(request.prompt())));
         }

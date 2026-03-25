@@ -3,6 +3,7 @@ package br.dev.bielsolosos.aichat.domain.model;
 import br.dev.bielsolosos.aichat.infrastructre.enums.ModelVendorEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class History {
 
     @Id
