@@ -1,11 +1,7 @@
 package br.dev.bielsolosos.aichat.domain.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import br.dev.bielsolosos.aichat.infrastructre.enums.ModelVendorEnum;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,4 +19,12 @@ public class History {
 
     @Column(name = "message", nullable = false, columnDefinition = "TEXT")
     private String message;
+
+    @Column(name = "model", nullable = false)
+    private String model;
+
+    @Column(name = "vendor", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private ModelVendorEnum modelVendor;
+
 }

@@ -1,5 +1,6 @@
 package br.dev.bielsolosos.aichat.infrastructre.utils;
 
+import br.dev.bielsolosos.aichat.infrastructre.enums.ModelVendorEnum;
 import br.dev.bielsolosos.aichat.infrastructre.properties.ChataiProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.model.ChatModel;
@@ -23,5 +24,13 @@ public class ChatModelVendor {
         }
 
         return model;
+    }
+
+    public String getModelName() {
+        return chataiProperties.getModelToUse();
+    }
+
+    public ModelVendorEnum getModelVendor() {
+        return chataiProperties.getModelBean();
     }
 }
