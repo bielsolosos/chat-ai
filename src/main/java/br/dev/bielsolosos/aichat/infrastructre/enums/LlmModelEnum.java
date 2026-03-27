@@ -10,6 +10,7 @@ public enum LlmModelEnum {
     GEMINI_1_5_PRO("gemini-1.5-pro", ModelVendorEnum.GEMINI),
     GEMINI_2_5_FLASH("gemini-2.5-flash", ModelVendorEnum.GEMINI),
     GEMMA_3_27B("gemma-3-27b-it", ModelVendorEnum.GEMINI),
+    GEMINI_2_5_FLASH_LITE("gemini-2.5-flash-lite", ModelVendorEnum.GEMINI),
     LLAMA_3_1_8B("llama3.1:8b", ModelVendorEnum.OLLAMA),
     LLAMA_3_2_3B("llama3.2:3b", ModelVendorEnum.OLLAMA);
 

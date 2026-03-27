@@ -24,7 +24,7 @@ spring:
       memory:
         repository:
           jdbc:
-            initialize-schema: always
+            initialize-schema: never
     google:
       genai:
         api-key: ${GEMINI_API_KEY:}

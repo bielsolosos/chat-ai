@@ -25,4 +25,9 @@ public class ChatResponseWithOptions {
     public ResponseEntity<ResponseFromLlm> getResponseWithOptions(@RequestBody RequestPrompt request) {
         return ResponseEntity.ok(service.getResponseWithDefaultOptions(request));
     }
+
+    @PostMapping("/with-options-default-memory")
+    public ResponseEntity<ResponseFromLlm> getResponseWithOptionsWithMemory(@RequestBody RequestPrompt request) {
+        return ResponseEntity.ok(service.getResponseWithDefaultOptionsWithMemory(request));
+    }
 }
