@@ -13,7 +13,10 @@ import org.springframework.validation.annotation.Validated;
 @Configuration
 @ConfigurationProperties(prefix = "spring.chat-ai")
 public class ChataiProperties {
+
     private String modelToUse;
+
+    private int maxAiMessages = 10;
 
     public ModelVendorEnum getModelBean() {
         return ModelVendorEnum.fromPropertyValue(this.modelToUse);

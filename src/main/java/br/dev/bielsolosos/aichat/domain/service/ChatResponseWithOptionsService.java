@@ -10,6 +10,7 @@ import br.dev.bielsolosos.aichat.shared.RequestPromptOptions;
 import br.dev.bielsolosos.aichat.shared.ResponseFromLlm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.PromptChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
@@ -71,6 +72,7 @@ public class ChatResponseWithOptionsService {
         ChatModel chatModel = getChatModel(LlmModelEnum.GEMINI_2_5_FLASH_LITE.getVendor());
 
         ChatOptions options = ChatOptions.builder().model(LlmModelEnum.GEMINI_2_5_FLASH_LITE.getModel()).temperature(0.3).maxTokens(250).build();
+
 
         ChatResponse response = ChatClient.builder(chatModel)
                 .defaultAdvisors(promptChatMemoryAdvisor)
