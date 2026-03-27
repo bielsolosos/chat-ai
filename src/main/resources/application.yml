@@ -38,6 +38,7 @@ spring:
           model: ${OLLAMA_MODEL:llama3.2}
   chat-ai:
     model-to-use: ${MODEL_TO_USE:gemini}
+    max-ai-messages: ${MAX_AI_MESSAGES:10}
 
 logging:
   level:
