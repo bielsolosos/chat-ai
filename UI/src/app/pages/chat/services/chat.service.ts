@@ -1,10 +1,10 @@
-import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RequestPrompt, ResponseFromLlm } from '../utils/chat.types';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChatService {
   private http = inject(HttpClient);
@@ -15,15 +15,9 @@ export class ChatService {
    * @param prompt Texto do usuário
    * @param withoutHistory Se true, não grava o histórico na tabela `history` do DB
    */
-  sendMessage(prompt: string, withoutHistory: boolean = false): Observable<ResponseFromLlm> {
+  sendMessage(prompt: string): Observable<ResponseFromLlm> {
     const body: RequestPrompt = { prompt };
-    
-    // Constrói a URL dinamicamente caso deseje suprimir histórico do banco
-    let url = this.backendUrl;
-    if (withoutHistory) {
-      url += '?withoutHistory=true';
-    }
 
-    return this.http.post<ResponseFromLlm>(url, body);
+    return this.http.post<ResponseFromLlm>(this.backendUrl, body);
   }
 }
